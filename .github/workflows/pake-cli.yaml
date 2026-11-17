@@ -225,6 +225,7 @@ jobs:
             $args += "--new-window"
           }
 
+          $args += "--dark-mode"
           Write-Host "Running: node dist/cli.js $($args -join ' ')"
           node dist/cli.js $args
 
