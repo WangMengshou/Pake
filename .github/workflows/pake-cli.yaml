@@ -48,6 +48,11 @@ on:
         required: false
         type: boolean
         default: false
+      dark_mode:
+        description: "启用深色模式"
+        required: false
+        type: boolean
+        default: false
       hide_title_bar:
         description: "Hide title bar (macOS only)"
         required: false
@@ -225,7 +230,9 @@ jobs:
             $args += "--new-window"
           }
 
-          $args += "--dark-mode"
+          if ("${{ inputs.dark_mode }}" -eq "true") {
+            $args += "--dark-mode"
+          }
           Write-Host "Running: node dist/cli.js $($args -join ' ')"
           node dist/cli.js $args
 
